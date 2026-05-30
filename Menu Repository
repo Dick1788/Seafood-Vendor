@@ -1,0 +1,66 @@
+import Image from "next/image";
+
+const menuItems = [
+  {
+    name: "Seafood Boil",
+    price: "$15.00",
+    image: "/images/seafood-boil.jpg",
+    description:
+      "Fresh shrimp, corn, potatoes, and Cajun butter sauce."
+  },
+  {
+    name: "Seafood Salad Bowl",
+    price: "$12.00",
+    image: "/images/seafood-salad.jpg",
+    description:
+      "Fresh greens with shrimp, cucumbers, tomatoes, and house dressing."
+  },
+  {
+    name: "Seafood Wraps",
+    price: "1 for $1.50 • 2 for $8.00 • 3 for $10.00",
+    image: "/images/seafood-wrap.jpg",
+    description:
+      "Crispy seafood wraps served fresh."
+  }
+];
+
+export default function MenuSection() {
+  return (
+    <section className="py-16 px-6">
+      <h2 className="text-center text-4xl font-bold mb-10">
+        Our Menu
+      </h2>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {menuItems.map((item) => (
+          <div
+            key={item.name}
+            className="bg-white rounded-xl shadow-lg overflow-hidden"
+          >
+            <Image
+              src={item.image}
+              alt={item.name}
+              width={600}
+              height={400}
+              className="w-full h-64 object-cover"
+            />
+
+            <div className="p-6">
+              <h3 className="text-2xl font-bold">
+                {item.name}
+              </h3>
+
+              <p className="text-red-600 font-semibold mt-2">
+                {item.price}
+              </p>
+
+              <p className="mt-3 text-gray-600">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
